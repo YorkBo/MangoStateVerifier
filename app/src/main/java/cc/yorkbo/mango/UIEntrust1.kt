@@ -16,7 +16,7 @@ import cc.yorkbo.ui.pagestate.PageLifecycle
  */
 class UIEntrust1 : IStateEntrust {
 
-    override fun onPageChange(pageObj: LifecycleOwner, lifecycleEvent: PageLifecycle) {
+    override fun onPageChanged(pageObj: LifecycleOwner, lifecycleEvent: PageLifecycle) {
         if (lifecycleEvent == PageLifecycle.RESUME) {
             var context: Context? = null
             if (pageObj is Fragment) {

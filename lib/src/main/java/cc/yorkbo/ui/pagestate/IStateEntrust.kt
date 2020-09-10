@@ -9,6 +9,6 @@ import androidx.lifecycle.LifecycleOwner
  */
 interface IStateEntrust {
 
-    fun onPageChange(pageObj: LifecycleOwner, lifecycleEvent: PageLifecycle)
+    fun onPageChanged(pageObj: LifecycleOwner, lifecycleEvent: PageLifecycle)
 
 }

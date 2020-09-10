@@ -41,7 +41,9 @@ class PageStateManager : IStateVerifier {
         pageStateKey: Int,
         stateEntrust: IStateEntrust
     ) {
-        getStateData(page)?.addPageEntrust(pageStateKey, stateEntrust)
+        getStateData(page)?.addPageEntrust(pageStateKey, stateEntrust).let {
+            throw NullPointerException("没有找到对应的页面，请先 bind 后再添加状态")
+        }
     }
 
     /**
@@ -65,10 +67,10 @@ class PageStateManager : IStateVerifier {
         val stateData = getStateData(page)
         stateData?.let {
             if (Looper.myLooper() == Looper.getMainLooper()) {
-                it.getPageEntrust(stateKey)?.onPageChange(page, stateData.getLifecycleEvent())
+                it.getPageEntrust(stateKey)?.onPageChanged(page, stateData.getLifecycleEvent())
             } else {
                 mHandle.post {
-                    it.getPageEntrust(stateKey)?.onPageChange(page, stateData.getLifecycleEvent())
+                    it.getPageEntrust(stateKey)?.onPageChanged(page, stateData.getLifecycleEvent())
                 }
             }
         }
