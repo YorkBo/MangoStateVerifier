@@ -6,7 +6,7 @@
 #### 依赖
 
 ```
-api com.github.YorkBo:MangoStateVerifier:v0.1.0
+api com.github.YorkBo:MangoStateVerifier:v0.1.1
 ```
 
 #### 使用简单，侵入性低
