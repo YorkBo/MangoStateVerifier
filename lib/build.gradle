@@ -1,0 +1,32 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin:'com.github.dcendents.android-maven'
+group='YorkBo/MangoStateVerifier'
+
+android {
+    def globalConfig = rootProject.extensions.getByName("ext")
+    compileSdkVersion globalConfig.androidCompileSdkVersion
+    defaultConfig {
+        minSdkVersion globalConfig.androidMinSdkVersion
+        targetSdkVersion globalConfig.androidTargetSdkVersion
+    }
+
+    compileOptions {
+        //使用java8
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    compileOnly "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
+    def androidDependencies = rootProject.ext.androidDependencies
+    compileOnly androidDependencies.annotations
+    compileOnly androidDependencies.appcompat
+    compileOnly androidDependencies.core
+
+}
